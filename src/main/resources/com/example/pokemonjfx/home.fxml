@@ -1,16 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.pokemonjfx.HomeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox alignment="CENTER" minHeight="600.0" minWidth="800.0" prefHeight="800.0" prefWidth="1000.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.pokemonjfx.HomeController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <SplitPane dividerPositions="0.15300193512774854" orientation="VERTICAL" prefHeight="747.0" prefWidth="960.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="394.0" layoutY="33.0" prefHeight="45.0" prefWidth="169.0" text="ShinyDex">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <VBox prefHeight="628.0" prefWidth="958.0">
+                     <children>
+                        <HBox prefHeight="523.0" prefWidth="958.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                              <VBox prefHeight="404.0" prefWidth="400.0" />
+                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                              <VBox prefHeight="404.0" prefWidth="400.0" />
+                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="178.0" prefWidth="958.0" />
+                        <HBox prefHeight="289.0" prefWidth="958.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="166.0" prefWidth="495.0">
+                                 <children>
+                                    <Button contentDisplay="CENTER" mnemonicParsing="false" text="Listar Pokemon">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="166.0" prefWidth="495.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Registrar Pokemon">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
 </VBox>
