@@ -1,7 +1,7 @@
 package com.example.pokemonjfx.model;
 
 public class Pokemon {
-    private int idPokemon;
+    private int number;
     private String name;
     private String primaryType;
     private String secondaryType;
@@ -9,7 +9,7 @@ public class Pokemon {
     private String shinyImage;
 
     public Pokemon(int idPokemon, String name, String primaryType, String secondaryType, String normalImage, String shinyImage) {
-        this.idPokemon = idPokemon;
+        this.number = idPokemon;
         this.name = name;
         this.primaryType = primaryType;
         this.secondaryType = secondaryType;
@@ -17,12 +17,12 @@ public class Pokemon {
         this.shinyImage = shinyImage;
     }
 
-    public int getIdPokemon() {
-        return idPokemon;
+    public int getNumber() {
+        return number;
     }
 
-    public void setIdPokemon(int idPokemon) {
-        this.idPokemon = idPokemon;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public String getName() {

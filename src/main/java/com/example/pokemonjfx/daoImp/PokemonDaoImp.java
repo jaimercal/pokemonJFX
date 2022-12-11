@@ -1,23 +1,24 @@
 package com.example.pokemonjfx.daoImp;
 
 import com.example.pokemonjfx.dao.GenericDao;
+import com.example.pokemonjfx.model.Pokemon;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class PokemonDaoImp implements GenericDao {
+public class PokemonDaoImp implements GenericDao<Pokemon> {
     @Override
-    public boolean update(Object obj) throws SQLException {
+    public boolean update(Pokemon pokemon) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean delete(Object obj) throws SQLException {
+    public boolean delete(Pokemon pokemon) throws SQLException {
         return false;
     }
 
     @Override
-    public Object add(Object obj) throws SQLException {
+    public Pokemon add(Pokemon pokemon) throws SQLException {
         return null;
     }
 
@@ -32,7 +33,7 @@ public class PokemonDaoImp implements GenericDao {
     }
 
     @Override
-    public Object get(int id) throws SQLException {
+    public Pokemon get(int id) throws SQLException {
         return null;
     }
 
