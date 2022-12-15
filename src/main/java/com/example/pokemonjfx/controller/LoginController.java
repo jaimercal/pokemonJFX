@@ -3,23 +3,22 @@ package com.example.pokemonjfx.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class HomeController {
+public class LoginController {
 
     @FXML
-    private Button pokemonButton;
+    private Button login;
 
     @FXML
-    private Button userButton;
+    private TextField loginNick;
 
     @FXML
-    void onPokemonClick(ActionEvent event) {
-
-    }
+    private TextField loginPassword;
 
     @FXML
-    void onUserClick(ActionEvent event) {
+    void onLogin(ActionEvent event) {
 
     }
 

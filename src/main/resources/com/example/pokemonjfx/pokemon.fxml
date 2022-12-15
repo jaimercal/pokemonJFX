@@ -14,7 +14,7 @@
    <children>
       <SplitPane dividerPositions="0.14625978737400655" orientation="VERTICAL" prefHeight="854.0" prefWidth="1000.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="227.0" prefWidth="998.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#toHome" prefHeight="227.0" prefWidth="998.0">
                <children>
                   <Label layoutX="447.0" layoutY="42.0" text="ShinyDex">
                      <font>

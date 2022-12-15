@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class PokemonRegisterController {
 
@@ -25,6 +26,11 @@ public class PokemonRegisterController {
 
     @FXML
     void onRegisterPokemon(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toHome(MouseEvent event) {
 
     }
 
