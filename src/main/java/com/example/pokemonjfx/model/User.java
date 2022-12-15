@@ -2,6 +2,7 @@ package com.example.pokemonjfx.model;
 
 import com.example.pokemonjfx.daoImp.UserDaoImp;
 import com.example.pokemonjfx.exceptions.UserException;
+import com.example.pokemonjfx.exceptions.UserNotFoundException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,6 +29,12 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.admin = admin;
+    }
+
+    public User(int idUser, String email, boolean banned) {
+        this.idUser = idUser;
+        this.email = email;
+        this.banned = banned;
     }
 
     public int getIdUser() {
@@ -78,7 +85,11 @@ public class User {
         this.banned = banned;
     }
 
-    public User register() throws SQLException, ClassNotFoundException, UserException {
+    public User logIn() throws SQLException, ClassNotFoundException, UserException, UserNotFoundException {
+        return UserDaoImp.getInstance().logIn(this);
+    }
+
+    public User register() throws SQLException, ClassNotFoundException, UserException, UserNotFoundException {
         return UserDaoImp.getInstance().add(this);
     }
 
@@ -88,5 +99,9 @@ public class User {
 
     public ArrayList<User> getAll() throws SQLException, ClassNotFoundException {
         return UserDaoImp.getInstance().getAll();
+    }
+
+    public User get() throws SQLException, ClassNotFoundException, UserNotFoundException {
+        return UserDaoImp.getInstance().get(this.idUser);
     }
 }

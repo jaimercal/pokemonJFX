@@ -2,6 +2,7 @@ package com.example.pokemonjfx.daoImp;
 
 import com.example.pokemonjfx.dao.GenericDao;
 import com.example.pokemonjfx.exceptions.UserException;
+import com.example.pokemonjfx.exceptions.UserNotFoundException;
 import com.example.pokemonjfx.model.User;
 import com.example.pokemonjfx.services.DBConnection;
 
@@ -49,7 +50,7 @@ public class UserDaoImp implements GenericDao<User> {
     }
 
     @Override
-    public User add(User user) throws SQLException, UserException {
+    public User add(User user) throws SQLException, UserException, UserNotFoundException {
         User result;
         String query = "select id_user from shinyDex.users where email=? or nickname=?";
         PreparedStatement stmt = this.connection.prepareStatement(query);
@@ -104,12 +105,47 @@ public class UserDaoImp implements GenericDao<User> {
     }
 
     @Override
-    public User get(int id) throws SQLException {
-        return null;
+    public User get(int id) throws SQLException, UserNotFoundException {
+        User result=null;
+        String query = "select id_user, email, nickname, admin from shinyDex.users where id_user=?";
+        PreparedStatement stmt2 = this.connection.prepareStatement(query);
+        stmt2.setInt(1, id);
+        ResultSet rs2 = stmt2.executeQuery();
+        if (rs2.next()){
+            result = new User(rs2.getInt("id_user"), rs2.getString("nickname"),
+                    rs2.getString("email"), rs2.getBoolean("admin"));
+        }else{
+            result = null;
+            throw new UserNotFoundException("Invalid credentials");
+        }
+        return result;
     }
 
     @Override
     public int count(String term) throws SQLException {
         return 0;
+    }
+
+    public User logIn (User userNotLogged) throws SQLException, UserException, UserNotFoundException, ClassNotFoundException {
+        User result;
+        String query = "select id_user, email, banned, activated from shinyDex.users where email=? and password=?";
+        PreparedStatement stmt = this.connection.prepareStatement(query);
+        stmt.setString(1, userNotLogged.getEmail());
+        stmt.setString(2, userNotLogged.getPassword());
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()){
+            User userExists = new User(rs.getInt("id_user"), rs.getString("email") ,rs.getBoolean("banned"));
+
+            if (userExists.isBanned()){
+                result = null;
+                throw new UserNotFoundException("Banned account");
+            }else{
+                result = userExists.get();
+            }
+        }else{
+            result = null;
+            throw new UserNotFoundException("Invalid credentials");
+        }
+        return result;
     }
 }

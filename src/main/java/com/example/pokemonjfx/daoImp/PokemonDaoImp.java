@@ -2,7 +2,9 @@ package com.example.pokemonjfx.daoImp;
 
 import com.example.pokemonjfx.dao.GenericDao;
 import com.example.pokemonjfx.exceptions.PokemonException;
+import com.example.pokemonjfx.exceptions.PokemonNotFoundException;
 import com.example.pokemonjfx.exceptions.UserException;
+import com.example.pokemonjfx.exceptions.UserNotFoundException;
 import com.example.pokemonjfx.model.Pokemon;
 import com.example.pokemonjfx.model.User;
 import com.example.pokemonjfx.services.DBConnection;
@@ -50,7 +52,7 @@ public class PokemonDaoImp implements GenericDao<Pokemon> {
     }
 
     @Override
-    public Pokemon add(Pokemon pokemon) throws SQLException, PokemonException {
+    public Pokemon add(Pokemon pokemon) throws SQLException, PokemonException, PokemonNotFoundException {
         Pokemon result;
         String query = "select number from shinyDex.pokemon where name=?";
         PreparedStatement stmt = this.connection.prepareStatement(query);
@@ -106,8 +108,21 @@ public class PokemonDaoImp implements GenericDao<Pokemon> {
     }
 
     @Override
-    public Pokemon get(int id) throws SQLException {
-        return null;
+    public Pokemon get(int id) throws SQLException, PokemonNotFoundException {
+        Pokemon result=null;
+        String query = "select number, name, primary_type, secondary_type, normal_photo, shiny_photo from shinyDex.pokemon where number=?";
+        PreparedStatement stmt2 = this.connection.prepareStatement(query);
+        stmt2.setInt(1, id);
+        ResultSet rs2 = stmt2.executeQuery();
+        if (rs2.next()){
+            result = new Pokemon(rs2.getInt("number"), rs2.getString("name"),
+                    rs2.getString("primary_type"), rs2.getString("secondary_type"),
+                    rs2.getString("normal_photo"), rs2.getString("shiny_photo"));
+        }else{
+            result = null;
+            throw new PokemonNotFoundException("Invalid credentials");
+        }
+        return result;
     }
 
     @Override

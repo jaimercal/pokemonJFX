@@ -2,6 +2,7 @@ package com.example.pokemonjfx.model;
 
 import com.example.pokemonjfx.daoImp.PokemonDaoImp;
 import com.example.pokemonjfx.exceptions.PokemonException;
+import com.example.pokemonjfx.exceptions.PokemonNotFoundException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class Pokemon {
         this.shinyImage = shinyImage;
     }
 
-    public Pokemon add() throws SQLException, ClassNotFoundException, PokemonException {
+    public Pokemon add() throws SQLException, ClassNotFoundException, PokemonException, PokemonNotFoundException {
         return PokemonDaoImp.getInstance().add(this);
     }
 
@@ -81,5 +82,8 @@ public class Pokemon {
 
     public ArrayList<Pokemon> getAll() throws SQLException, ClassNotFoundException {
         return PokemonDaoImp.getInstance().getAll();
+    }
+    public Pokemon get() throws SQLException, ClassNotFoundException, PokemonNotFoundException {
+        return PokemonDaoImp.getInstance().get(this.number);
     }
 }
