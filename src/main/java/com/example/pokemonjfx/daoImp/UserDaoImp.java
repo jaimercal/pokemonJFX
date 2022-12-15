@@ -128,7 +128,7 @@ public class UserDaoImp implements GenericDao<User> {
 
     public User logIn (User userNotLogged) throws SQLException, UserException, UserNotFoundException, ClassNotFoundException {
         User result;
-        String query = "select id_user, email, banned, activated from shinyDex.users where email=? and password=?";
+        String query = "select id_user, email, banned from shinyDex.users where email=? and password=?";
         PreparedStatement stmt = this.connection.prepareStatement(query);
         stmt.setString(1, userNotLogged.getEmail());
         stmt.setString(2, userNotLogged.getPassword());

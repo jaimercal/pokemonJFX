@@ -24,6 +24,9 @@ public class Pokemon {
         this.shinyImage = shinyImage;
     }
 
+    public Pokemon() {
+    }
+
     public int getNumber() {
         return number;
     }

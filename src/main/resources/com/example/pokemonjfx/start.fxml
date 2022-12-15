@@ -38,7 +38,7 @@
                                 <HBox prefHeight="178.0" prefWidth="958.0" />
                                 <HBox alignment="CENTER" prefHeight="289.0" prefWidth="958.0">
                            <children>
-                              <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLoginClick" text="Login">
+                              <Button fx:id="loginButton" mnemonicParsing="false" text="Login">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

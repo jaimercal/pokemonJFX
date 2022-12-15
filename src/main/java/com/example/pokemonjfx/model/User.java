@@ -37,6 +37,14 @@ public class User {
         this.banned = banned;
     }
 
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public User() {
+    }
+
     public int getIdUser() {
         return idUser;
     }
