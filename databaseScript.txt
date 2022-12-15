@@ -31,6 +31,6 @@ insert into shinyDex.users (email, nickname, password, admin, banned) values ('a
 insert into shinyDex.users (email, nickname, password, admin, banned) values ('b@b.com','b','6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b',0,0);
 insert into shinyDex.users (email, nickname, password, admin, banned) values ('c@c.com','c','6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b',0,0);
 
-insert into shinyDex.pokemon (number, name, primary_type, secondary_type) values (1,'bulbasur','plant','poison');
-insert into shinyDex.pokemon (number, name, primary_type) values (4,'charmander','fire');
-insert into shinyDex.pokemon (number, name, primary_type) values (7,'squirtle','water');
+insert into shinyDex.pokemon (number, name, primary_type, secondary_type) values (1,'Bulbasur','Grass','Poison');
+insert into shinyDex.pokemon (number, name, primary_type) values (4,'Charmander','Fire');
+insert into shinyDex.pokemon (number, name, primary_type) values (7,'Squirtle','Water');

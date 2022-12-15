@@ -24,6 +24,13 @@ public class Pokemon {
         this.shinyImage = shinyImage;
     }
 
+    public Pokemon(int number, String name, String primaryType, String secondaryType) {
+        this.number = number;
+        this.name = name;
+        this.primaryType = primaryType;
+        this.secondaryType = secondaryType;
+    }
+
     public Pokemon() {
     }
 

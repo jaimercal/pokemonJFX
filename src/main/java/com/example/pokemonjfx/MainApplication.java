@@ -13,7 +13,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("start"));
+        scene = new Scene(loadFXML("pokemonRegister"));
         stage.setTitle("ShinyDex");
         stage.setScene(scene);
         stage.show();

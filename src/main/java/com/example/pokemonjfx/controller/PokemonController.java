@@ -29,15 +29,6 @@ public class PokemonController implements Initializable {
     private ArrayList<Pokemon> pokemon;
 
     @FXML
-    void onPokemonRegister(ActionEvent event) {
-        try{
-            MainApplication.setRoot("pokemonRegister");
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
     void toHome(MouseEvent event) {
         try{
             MainApplication.setRoot("start");
@@ -55,8 +46,8 @@ public class PokemonController implements Initializable {
         TableColumn<Pokemon, Boolean> colSecondaryType = new TableColumn<>("SecondaryType");
         colNumber.setCellValueFactory(new PropertyValueFactory<>("number"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colPrimaryType.setCellValueFactory(new PropertyValueFactory<>("primary_type"));
-        colSecondaryType.setCellValueFactory(new PropertyValueFactory<>("secondary_type"));
+        colPrimaryType.setCellValueFactory(new PropertyValueFactory<>("primaryType"));
+        colSecondaryType.setCellValueFactory(new PropertyValueFactory<>("secondaryType"));
         pokemonList.getColumns().addAll(colNumber, colName, colPrimaryType, colSecondaryType);
 
     }
@@ -80,6 +71,13 @@ public class PokemonController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        pokemonRegisterButton.setOnAction(actionEvent -> {
+            try{
+                MainApplication.setRoot("pokemonRegister");
+            }catch (IOException e){
+                throw new RuntimeException(e);
+            }
+        });
         this.pokemon = loadPokemon();
         createTable();
         fillTable(this.pokemon);

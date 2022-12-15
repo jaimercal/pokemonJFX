@@ -40,7 +40,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="166.0" prefWidth="495.0">
                                  <children>
-                                    <Button fx:id="pokemonButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onPokemonClick" text="Pokemon">
+                                    <Button fx:id="pokemonButton" contentDisplay="CENTER" mnemonicParsing="false" text="Pokemon">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -49,7 +49,7 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="166.0" prefWidth="495.0">
                                  <children>
-                                    <Button fx:id="userButton" mnemonicParsing="false" onAction="#onUserClick" text="Users">
+                                    <Button fx:id="userButton" mnemonicParsing="false" text="Users">
                                        <font>
                                           <Font size="20.0" />
                                        </font>

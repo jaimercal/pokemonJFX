@@ -7,14 +7,17 @@ import com.example.pokemonjfx.model.User;
 import com.example.pokemonjfx.services.HashService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML
     private Button login;
@@ -25,8 +28,12 @@ public class LoginController {
     @FXML
     private TextField loginPassword;
 
-    @FXML
-    void onLogin(ActionEvent event) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        login.setOnAction(this::onLogin);
+    }
+
+    private void onLogin(ActionEvent event) {
         HashService hashService = new HashService();
         User user = new User(loginNick.getText(), hashService.toHash(loginPassword.getText()));
         try{

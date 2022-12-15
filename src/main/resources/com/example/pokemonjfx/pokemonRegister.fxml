@@ -46,7 +46,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="125.0" prefWidth="998.0">
                            <children>
-                              <Button fx:id="registerPokemon" mnemonicParsing="false" onAction="#onRegisterPokemon" text="Register Pokemon">
+                              <Button fx:id="registerPokemon" mnemonicParsing="false" text="Register Pokemon">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

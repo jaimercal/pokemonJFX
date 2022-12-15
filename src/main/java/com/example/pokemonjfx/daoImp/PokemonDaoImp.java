@@ -54,9 +54,10 @@ public class PokemonDaoImp implements GenericDao<Pokemon> {
     @Override
     public Pokemon add(Pokemon pokemon) throws SQLException, PokemonException, PokemonNotFoundException {
         Pokemon result;
-        String query = "select number from shinyDex.pokemon where name=?";
+        String query = "select number from shinyDex.pokemon where name=? or number=?";
         PreparedStatement stmt = this.connection.prepareStatement(query);
         stmt.setString(1, pokemon.getName());
+        stmt.setInt(2, pokemon.getNumber());
         ResultSet rs = stmt.executeQuery();
         if (!rs.next()){
             query = "insert into shinyDex.pokemon (number, name, primary_type, secondary_type) values (?,?,?,?);";
@@ -72,7 +73,7 @@ public class PokemonDaoImp implements GenericDao<Pokemon> {
                 stmt.setString(1, pokemon.getName());
                 rs = stmt.executeQuery();
                 if (rs.next()){
-                    result = this.get(rs.getInt("id_user"));
+                    result = this.get(rs.getInt("number"));
                 }else {
                     result = null;
                     throw new PokemonException("An error was found");
