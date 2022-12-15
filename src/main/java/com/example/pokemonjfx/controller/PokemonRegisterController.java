@@ -83,7 +83,7 @@ public class PokemonRegisterController implements Initializable {
     @FXML
     void toHome(MouseEvent event) {
         try{
-            MainApplication.setRoot("start");
+            MainApplication.setRoot("home");
         }catch (IOException e){
             throw new RuntimeException(e);
         }

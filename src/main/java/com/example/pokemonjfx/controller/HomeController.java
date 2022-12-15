@@ -20,9 +20,12 @@ public class HomeController implements Initializable {
     private Button userButton;
 
     @FXML
+    private Button logoutButton;
+
+    @FXML
     void toHome(MouseEvent event) {
         try{
-            MainApplication.setRoot("start");
+            MainApplication.setRoot("home");
         }catch (IOException e){
             throw new RuntimeException(e);
         }
@@ -40,6 +43,13 @@ public class HomeController implements Initializable {
         userButton.setOnAction(actionEvent -> {
             try{
                 MainApplication.setRoot("users");
+            }catch (IOException e){
+                throw new RuntimeException(e);
+            }
+        });
+        logoutButton.setOnAction(actionEvent -> {
+            try{
+                MainApplication.setRoot("start");
             }catch (IOException e){
                 throw new RuntimeException(e);
             }
