@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,11 +40,13 @@ public class UsersController implements Initializable {
         TableColumn<User, String> colEmail = new TableColumn<>("Email");
         TableColumn<User, Boolean> colAdmin = new TableColumn<>("Admin");
         TableColumn<User, Boolean> colBanned = new TableColumn<>("Banned");
+        TableColumn<User, Button> colBan = new TableColumn<>("Delete");
         colNickname.setCellValueFactory(new PropertyValueFactory<>("nickname"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colAdmin.setCellValueFactory(new PropertyValueFactory<>("admin"));
         colBanned.setCellValueFactory(new PropertyValueFactory<>("banned"));
-        usersList.getColumns().addAll(colNickname, colEmail, colAdmin, colBanned);
+        colBan.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
+        usersList.getColumns().addAll(colNickname, colEmail, colAdmin, colBanned, colBan);
 
     }
 

@@ -1,8 +1,10 @@
 package com.example.pokemonjfx.model;
 
+import com.example.pokemonjfx.MainApplication;
 import com.example.pokemonjfx.daoImp.UserDaoImp;
 import com.example.pokemonjfx.exceptions.UserException;
 import com.example.pokemonjfx.exceptions.UserNotFoundException;
+import javafx.scene.control.Button;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class User {
     private String password;
     private boolean admin;
     private boolean banned;
+    private Button deleteButton;
 
     public User(int idUser, String nickname, String email, String password, boolean admin, boolean banned) {
         this.idUser = idUser;
@@ -29,6 +32,16 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.admin = admin;
+        this.deleteButton = new Button("delete");
+        this.deleteButton.setOnAction(actionEvent -> {
+            this.banned = !this.banned;
+            try {
+                this.delete();
+                MainApplication.setRoot("users");
+            }catch (Exception ignored) {
+
+            }
+        });
     }
 
     public User(int idUser, String email, boolean banned) {
@@ -91,6 +104,14 @@ public class User {
 
     public void setBanned(boolean banned) {
         this.banned = banned;
+    }
+
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+
+    public void setDeleteButton(Button deleteButton) {
+        this.deleteButton = deleteButton;
     }
 
     public User logIn() throws SQLException, ClassNotFoundException, UserException, UserNotFoundException {

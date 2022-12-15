@@ -1,8 +1,10 @@
 package com.example.pokemonjfx.model;
 
+import com.example.pokemonjfx.MainApplication;
 import com.example.pokemonjfx.daoImp.PokemonDaoImp;
 import com.example.pokemonjfx.exceptions.PokemonException;
 import com.example.pokemonjfx.exceptions.PokemonNotFoundException;
+import javafx.scene.control.Button;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class Pokemon {
     private String secondaryType;
     private String normalImage;
     private String shinyImage;
+    private Button deleteButton;
 
     public Pokemon(int idPokemon, String name, String primaryType, String secondaryType, String normalImage, String shinyImage) {
         this.number = idPokemon;
@@ -22,6 +25,15 @@ public class Pokemon {
         this.secondaryType = secondaryType;
         this.normalImage = normalImage;
         this.shinyImage = shinyImage;
+        this.deleteButton = new Button("delete");
+        this.deleteButton.setOnAction(actionEvent -> {
+            try {
+                this.delete();
+                MainApplication.setRoot("pokemon");
+            }catch (Exception ignored) {
+
+            }
+        });
     }
 
     public Pokemon(int number, String name, String primaryType, String secondaryType) {
