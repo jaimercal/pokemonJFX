@@ -25,6 +25,7 @@ public class UserDaoImp implements GenericDao<User> {
         }
         return instance;
     }
+
     @Override
     public boolean update(User user) throws SQLException {
         return false;
@@ -56,7 +57,7 @@ public class UserDaoImp implements GenericDao<User> {
         stmt.setString(2, user.getNickname());
         ResultSet rs = stmt.executeQuery();
         if (!rs.next()){
-            query = "insert into shinyDex.users (email, nickname, password, admin, activated, banned) values (?,?,?,0,0,0);";
+            query = "insert into shinyDex.users (email, nickname, password, admin, banned) values (?,?,?,0,0);";
             PreparedStatement stmt2 = this.connection.prepareStatement(query);
             stmt2.setString(1, user.getEmail());
             stmt2.setString(2, user.getNickname());
@@ -92,7 +93,7 @@ public class UserDaoImp implements GenericDao<User> {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             result.add(new User(rs.getInt("id_user"), rs.getString("nickname"),
-                    rs.getBoolean("admin"), rs.getString("email")));
+                    rs.getString("email"), rs.getBoolean("admin")));
         }
         return result;
     }

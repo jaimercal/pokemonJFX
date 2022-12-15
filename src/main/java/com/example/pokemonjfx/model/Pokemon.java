@@ -1,5 +1,11 @@
 package com.example.pokemonjfx.model;
 
+import com.example.pokemonjfx.daoImp.PokemonDaoImp;
+import com.example.pokemonjfx.exceptions.PokemonException;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Pokemon {
     private int number;
     private String name;
@@ -63,5 +69,17 @@ public class Pokemon {
 
     public void setShinyImage(String shinyImage) {
         this.shinyImage = shinyImage;
+    }
+
+    public Pokemon add() throws SQLException, ClassNotFoundException, PokemonException {
+        return PokemonDaoImp.getInstance().add(this);
+    }
+
+    public boolean delete() throws SQLException, ClassNotFoundException, PokemonException {
+        return PokemonDaoImp.getInstance().delete(this);
+    }
+
+    public ArrayList<Pokemon> getAll() throws SQLException, ClassNotFoundException {
+        return PokemonDaoImp.getInstance().getAll();
     }
 }
