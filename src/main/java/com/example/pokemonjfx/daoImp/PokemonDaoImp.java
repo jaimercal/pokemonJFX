@@ -84,7 +84,7 @@ public class PokemonDaoImp implements GenericDao<Pokemon> {
             }
         }else {
             result = null;
-            throw new PokemonException("An error was found");
+            throw new PokemonException("This pokemon already exists");
         }
         return result;
     }

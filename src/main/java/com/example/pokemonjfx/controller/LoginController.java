@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -28,6 +29,9 @@ public class LoginController implements Initializable {
     @FXML
     private TextField loginPassword;
 
+    @FXML
+    private Label userError;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         login.setOnAction(this::onLogin);
@@ -40,12 +44,16 @@ public class LoginController implements Initializable {
             user.logIn();
             MainApplication.setRoot("home");
         }catch (UserException | IOException e){
+            userError.setText(e.getMessage());
             throw new RuntimeException(e);
         } catch (UserNotFoundException e) {
+            userError.setText(e.getMessage());
             throw new RuntimeException(e);
         } catch (SQLException e) {
+            userError.setText(e.getMessage());
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
+            userError.setText(e.getMessage());
             throw new RuntimeException(e);
         }
     }

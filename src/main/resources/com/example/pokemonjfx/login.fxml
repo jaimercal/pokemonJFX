@@ -34,6 +34,7 @@
                                                 <TextField fx:id="loginNick" layoutX="564.0" layoutY="70.0" />
                                                 <Label layoutX="198.0" layoutY="74.0" text="Email" />
                                                 <Label layoutX="200.0" layoutY="148.0" text="Password" />
+                                    <Label fx:id="userError" layoutX="484.0" layoutY="216.0" textFill="RED" />
                                             </children>
                                         </AnchorPane>
                                     </children>

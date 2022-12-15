@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -34,12 +35,16 @@ public class PokemonRegisterController implements Initializable {
     private ChoiceBox<Types> pokemonSecondaryType;
 
     @FXML
+    private Label pokemonError;
+
+    @FXML
     private Button registerPokemon;
 
     private Pokemon validatePokemon(){
         try{
             Integer.parseInt(pokemonId.getText());
         }catch (NumberFormatException e){
+            pokemonError.setText("Parametre number has to be a number");
             throw new RuntimeException(e);
         }
         ConvertToTitle convertToTitle = new ConvertToTitle();
@@ -58,14 +63,19 @@ public class PokemonRegisterController implements Initializable {
             pokemon.add();
             MainApplication.setRoot("pokemon");
         }catch (IOException e){
+            pokemonError.setText(e.getMessage());
             throw new RuntimeException(e);
         } catch (PokemonNotFoundException e) {
+            pokemonError.setText(e.getMessage());
             throw new RuntimeException(e);
         } catch (SQLException e) {
+            pokemonError.setText(e.getMessage());
             throw new RuntimeException(e);
         } catch (PokemonException e) {
+            pokemonError.setText(e.getMessage());
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
+            pokemonError.setText(e.getMessage());
             throw new RuntimeException(e);
         }
     }
