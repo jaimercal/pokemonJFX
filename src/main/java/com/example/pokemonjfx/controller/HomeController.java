@@ -19,15 +19,6 @@ public class HomeController {
     @FXML
     private Button userButton;
 
-    private void loadNextScreen(ActionEvent event, String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
-        Parent root = fxmlLoader.load();
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     @FXML
     void onPokemonClick(ActionEvent event) {
 

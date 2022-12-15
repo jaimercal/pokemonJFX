@@ -1,0 +1,24 @@
+DROP database IF EXISTS shinyDex;
+create database shinyDex;
+
+use shinyDex;
+
+create table users(
+    id_user int auto_increment not null ,
+    nickname varchar(20) not null ,
+    admin tinyint not null ,
+    email varchar(255) not null ,
+    password varchar(255) not null ,
+    banned tinyint not null ,
+    PRIMARY KEY (id_user)
+);
+
+create table pokemon(
+    number int not null ,
+    name varchar(50) not null ,
+    primary_type varchar(15) not null ,
+    secondary_type varchar(15) ,
+    normal_photo varchar(255) ,
+    shiny_photo varchar(255) ,
+    PRIMARY KEY (number)
+);
