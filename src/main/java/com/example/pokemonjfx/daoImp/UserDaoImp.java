@@ -126,19 +126,22 @@ public class UserDaoImp implements GenericDao<User> {
         return 0;
     }
 
-    public User logIn (User userNotLogged) throws SQLException, UserException, UserNotFoundException, ClassNotFoundException {
+    public User adminLogIn(User userNotLogged) throws SQLException, UserException, UserNotFoundException, ClassNotFoundException {
         User result;
-        String query = "select id_user, email, banned from shinyDex.users where email=? and password=?";
+        String query = "select id_user, email, banned, admin from shinyDex.users where email=? and password=?";
         PreparedStatement stmt = this.connection.prepareStatement(query);
         stmt.setString(1, userNotLogged.getEmail());
         stmt.setString(2, userNotLogged.getPassword());
         ResultSet rs = stmt.executeQuery();
         if (rs.next()){
-            User userExists = new User(rs.getInt("id_user"), rs.getString("email") ,rs.getBoolean("banned"));
+            User userExists = new User(rs.getInt("id_user"), rs.getString("email") ,rs.getBoolean("banned"), rs.getBoolean("admin"));
 
             if (userExists.isBanned()){
                 result = null;
                 throw new UserNotFoundException("Banned account");
+            }else if(!userExists.isAdmin()){
+                result = null;
+                throw new UserNotFoundException("Account not admin");
             }else{
                 result = userExists.get();
             }

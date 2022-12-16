@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
         HashService hashService = new HashService();
         User user = new User(loginNick.getText(), hashService.toHash(loginPassword.getText()));
         try{
-            user.logIn();
+            user.adminLogIn();
             MainApplication.setRoot("home");
         }catch (UserException | IOException e){
             userError.setText(e.getMessage());

@@ -44,10 +44,11 @@ public class User {
         });
     }
 
-    public User(int idUser, String email, boolean banned) {
+    public User(int idUser, String email, boolean banned, boolean admin) {
         this.idUser = idUser;
         this.email = email;
         this.banned = banned;
+        this.admin = admin;
     }
 
     public User(String email, String password) {
@@ -114,8 +115,8 @@ public class User {
         this.deleteButton = deleteButton;
     }
 
-    public User logIn() throws SQLException, ClassNotFoundException, UserException, UserNotFoundException {
-        return UserDaoImp.getInstance().logIn(this);
+    public User adminLogIn() throws SQLException, ClassNotFoundException, UserException, UserNotFoundException {
+        return UserDaoImp.getInstance().adminLogIn(this);
     }
 
     public User register() throws SQLException, ClassNotFoundException, UserException, UserNotFoundException {
